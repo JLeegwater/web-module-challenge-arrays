@@ -170,7 +170,6 @@ Use the filterByWord function below to do the following:
 
 function filterByWord(array,string){
     const newArr = [];
-    console.log(newArr);
     for(let c = 0; c<array.length;c++){
         if(array[c].includes(string)){
             newArr.push(array[c]);
@@ -193,10 +192,13 @@ Use the getAverageWordLength function below to do the following:
     For example: getAverageWordLength(originalFlavors) should return a number between 0 and 3.     
 */
 
-function getAverageWordLength(/*code here*/){
-    /*code here*/
+function getAverageWordLength(array){
+    let count = 0;
+    for(let c = 0;c<array.length;c++){
+        count += array[c].split(' ').length;
+    }
+    return count/array.length;
 }
-
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪
 Baskin Robins now offers new flavors, seasonal flavors, and even regional flavors. Write a function that will randomly select a total of 31 flavors 
@@ -211,9 +213,18 @@ Use the getRandomFlavors function and new arrays below to do the following:
 */
 
 
-function getRandomFlavors(/*code here*/){
-    /*code here*/
+function getRandomFlavors(arr1,arr2,arr3,arr4){
+    const flavArr = [arr1,arr2,arr3,arr4];
+    const randomFlavors =[];
+
+    for(let i=0;i<31;i++){
+        let ran = Math.floor(Math.random()*3);
+        let ran2 = Math.floor(Math.random()*flavArr[ran].length);
+        randomFlavors.unshift(flavArr[ran][ran2]);
+    }
+    return randomFlavors;
 }
+
 
 // NEW DATA ARRAYS FOR STRETCH 2 ⬇️
 const newFlavors = [
@@ -296,7 +307,7 @@ const regionalFlavors = [
     "Caramel 'n' Cookies"
 ]
 
-
+getRandomFlavors(originalFlavors, newFlavors, seasonalFlavors, regionalFlavors);
 
 /* 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 Please do not modify anything below this line 🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑 */
 function foo(){
